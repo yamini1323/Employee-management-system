@@ -1,0 +1,234 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.assignment</groupId>
+  <artifactId>employee-portal-copy</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>employee-portal-copy</name>
+
+  <properties>
+    <!-- Java -->
+    <java.version>11</java.version>
+    <maven.compiler.release>11</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+    <!-- Spring Framework -->
+    <spring.version>5.3.33</spring.version>
+
+    <!-- JSON -->
+    <jackson.version>2.15.4</jackson.version>
+
+    <!-- Tomcat 9 (javax.*) -->
+    <servlet.api.version>4.0.1</servlet.api.version>
+
+    <!-- Database -->
+    <postgres.driver.version>42.7.3</postgres.driver.version>
+
+    <!-- Validation -->
+    <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
+    <hibernate.validator.version>6.2.5.Final</hibernate.validator.version>
+
+    <!-- TESTING (JUnit 4 + Mockito) -->
+    <junit.version>4.13.2</junit.version>
+    <mockito.version>5.11.0</mockito.version>
+    <surefire.version>3.2.5</surefire.version>
+  </properties>
+
+  <dependencies>
+
+    <!-- ===================== APPLICATION DEPENDENCIES ===================== -->
+
+    <!-- Spring MVC -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Spring Core / Context -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- JDBC + JdbcTemplate -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jdbc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Transactions -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+
+    <!-- Jackson Databind -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!-- Jackson Java 8 Date/Time -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+
+    <!-- Servlet API (provided by container) -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>${servlet.api.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- JSP/JSTL -->
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>jstl</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+      <scope>runtime</scope>
+    </dependency>
+
+    <!-- PostgreSQL Driver -->
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>${postgres.driver.version}</version>
+    </dependency>
+
+    <!-- Bean Validation -->
+    <dependency>
+      <groupId>javax.validation</groupId>
+      <artifactId>validation-api</artifactId>
+      <version>${javax.validation.api.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.hibernate.validator</groupId>
+      <artifactId>hibernate-validator</artifactId>
+      <version>${hibernate.validator.version}</version>
+    </dependency>
+
+    <!-- ===================== TEST DEPENDENCIES (JUnit 4) ===================== -->
+
+    <!-- Spring Test (MockMvc, etc.) -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-test</artifactId>
+      <version>${spring.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JsonPath for jsonPath() assertions -->
+    <dependency>
+      <groupId>com.jayway.jsonpath</groupId>
+      <artifactId>json-path</artifactId>
+      <version>2.9.0</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- JUnit 4 -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+
+    <!-- Mockito (JUnit 4 compatible) -->
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-core</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    
+    
+    <!-- Hamcrest for matchers used by MockMvc -->
+<dependency>
+    <groupId>org.hamcrest</groupId>
+    <artifactId>hamcrest</artifactId>
+    <version>2.2</version>
+    <scope>test</scope>
+</dependency>
+
+    <!-- OPTIONAL: mockito-inline if you need to mock finals -->
+    <!--
+    <dependency>
+      <groupId>org.mockito</groupId>
+      <artifactId>mockito-inline</artifactId>
+      <version>${mockito.version}</version>
+      <scope>test</scope>
+    </dependency>
+    -->
+
+    <!-- OPTIONAL: Hamcrest (often pulled transitively; add explicitly if you need it) -->
+    <!--
+    <dependency>
+      <groupId>org.hamcrest</groupId>
+      <artifactId>hamcrest</artifactId>
+      <version>2.2</version>
+      <scope>test</scope>
+    </dependency>
+    -->
+
+  </dependencies>
+
+  <build>
+    <finalName>employee-portal-copy</finalName>
+
+    <plugins>
+      <!-- Compiler -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <release>${maven.compiler.release}</release>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <!-- WAR plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+        </configuration>
+      </plugin>
+
+      <!-- Surefire (runs tests). 3.x works with JUnit 4 too -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.version}</version>
+        <configuration>
+          <useSystemClassLoader>true</useSystemClassLoader>
+          <trimStackTrace>false</trimStackTrace>
+          <!-- No extra includes needed; JUnit 4 tests are auto-detected -->
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>
